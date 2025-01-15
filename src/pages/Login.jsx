@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const User = {
   email : 'test@example.com',
@@ -12,6 +13,8 @@ export default function Login() {
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
+
+  const navigate = useNavigate();
 
   const handelEmail = (e) => {
     setEmail(e.target.value);
@@ -46,7 +49,7 @@ export default function Login() {
   const onClickConfirmButton = () => {
     if(email === User.email && pw === User.pw){
       alert('로그인 성공');
-      
+      navigate('/')
     }else{
       alert('등록되어지지 않은 회원입니다.');
     }
